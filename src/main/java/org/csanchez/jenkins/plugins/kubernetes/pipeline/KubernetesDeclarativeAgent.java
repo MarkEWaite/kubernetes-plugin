@@ -514,5 +514,4 @@ public class KubernetesDeclarativeAgent extends RetryableDeclarativeAgent<Kubern
             return WorkspaceVolume.getDefault();
         }
     }
-
 }
