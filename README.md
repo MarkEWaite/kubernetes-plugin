@@ -858,7 +858,7 @@ See the [example](src/main/resources/org/csanchez/jenkins/plugins/kubernetes/pip
 
 The security model for the plugin requires that untrusted actors be denied even read-only access to the agent namespace.
 (Anyone able to view pods will be able to gather all the information needed to connect their own processes to the controller, impersonating the agent.)
-This implies in particular that agent pods must not run with a service access with permissions to its own namespace.
+This implies in particular that agent pods must not run with a service account with permissions to its own namespace.
 
 # Configuration on minikube
 
