@@ -37,7 +37,7 @@ It is not required to run the Jenkins controller inside Kubernetes.
 - [Running on OpenShift](#running-on-openshift)
 - [Features controlled using system properties](#features-controlled-using-system-properties)
 - [Windows support](#windows-support)
-- [Constraints](#constraints)
+- [Security considerations](#security-considerations)
 - [Configuration on minikube](#configuration-on-minikube)
 - [Configuration on Google Container Engine](#configuration-on-google-container-engine)
 - [Troubleshooting 🔨](#troubleshooting)
@@ -853,6 +853,12 @@ beta.kubernetes.io/os=linux
 
 You can run pods on Windows if your cluster has Windows nodes.
 See the [example](src/main/resources/org/csanchez/jenkins/plugins/kubernetes/pipeline/samples/windows.groovy).
+
+# Security considerations
+
+The security model for the plugin requires that untrusted actors be denied even read-only access to the agent namespace.
+(Anyone able to view pods will be able to gather all the information needed to connect their own processes to the controller, impersonating the agent.)
+This implies in particular that agent pods must not run with a service access with permissions to its own namespace.
 
 # Configuration on minikube
 
